@@ -10,17 +10,28 @@ type AccordionProps = {
     rows: Array<Merchant>
 }
 
+type AccordionRootProps = {
+    noData: boolean
+}
+
 const AccordionRoot = styled.div`
     width: 600px;
-    border: 1px solid ${StyleConstants.colors.yellow};
-`
+    border: ${(props: AccordionRootProps) => props.noData ? 'none' : `1px solid ${StyleConstants.colors.yellow}`};
+`;
+
+const NoData = styled.div`
+    color: ${StyleConstants.colors.yellow};
+`;
 
 const Accordion: FC<AccordionProps> = ({rows}) => {
     return (
-        <AccordionRoot id="accordion-root">
-            {rows.map((row) => (
+        <AccordionRoot id="accordion-root" noData={rows.length === 0}>
+            {rows.length > 0 && rows.map((row) => (
                 <AccordionRow data={row} key={`merchant-${row.id}`}/>
             ))}
+            {rows.length === 0 && (
+                <NoData>No transaction to show...</NoData>
+            )}
         </AccordionRoot>
     )
 }

@@ -30,12 +30,7 @@ const AccordionRow: FC<AccordionRowProps> = ({data}) => {
 
     return (
         <AccordionRowRoot id="ar-root">
-            <AccordionHeader
-                label={data.name}
-                imageUrl={data.iconUrl}
-                onHeaderClick={handleHeaderClick}
-                transactionsCount={data.transactions.length}
-            />
+            <AccordionHeader {...{data}} onHeaderClick={handleHeaderClick}/>
             <AccordionBody {...{data}} isVisible={showBody}/>
         </AccordionRowRoot>
     )
