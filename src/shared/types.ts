@@ -6,5 +6,20 @@ export type TabType = {
 }
 
 export type ReduxState = {
-    transactions: any
+    merchants: any
+}
+
+export type Transaction = {
+    amount: number,
+    date: string,
+    id: number
+}
+
+export type Merchant = {
+    categoryId: number,
+    iconUrl: string,
+    id: string
+    isBill: boolean
+    name: string
+    transactions: Array<Transaction>
 }

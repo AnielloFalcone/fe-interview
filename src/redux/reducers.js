@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import {transactionsReducer} from './transactions';
+import {merchantsReducer} from './merchants';
 
 const rootReducer = combineReducers({
-    transactions: transactionsReducer
+    merchants: merchantsReducer
 });
 
 export default rootReducer;

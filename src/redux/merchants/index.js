@@ -1,29 +1,28 @@
 import axios from '../../settings/customAxios';
 
 /* TYPES */
-export const FETCH_TRANSACTIONS_PENDING = 'FETCH_TRANSACTIONS_PENDING';
-export const FETCH_TRANSACTIONS_SUCCESS = 'FETCH_TRANSACTIONS_SUCCESS';
-export const FETCH_TRANSACTIONS_FAILURE = 'FETCH_TRANSACTIONS_FAILURE';
+export const FETCH_MERCHANTS_PENDING = 'FETCH_MERCHANTS_PENDING';
+export const FETCH_MERCHANTS_SUCCESS = 'FETCH_MERCHANTS_SUCCESS';
+export const FETCH_MERCHANTS_FAILURE = 'FETCH_MERCHANTS_FAILURE';
 
 /* ACTIONS */
 export const fetchDataPending = () => ({
-    type: FETCH_TRANSACTIONS_PENDING
+    type: FETCH_MERCHANTS_PENDING
 });
 export const fetchDataSuccess = (payload) => ({
-    type: FETCH_TRANSACTIONS_SUCCESS,
+    type: FETCH_MERCHANTS_SUCCESS,
     payload
 });
 export const fetchDataFailure = (payload) => ({
-    type: FETCH_TRANSACTIONS_FAILURE,
+    type: FETCH_MERCHANTS_FAILURE,
     payload
 });
 
-export const fetchTransactions = () => async (dispatch) => {
+export const fetchMerchants = () => async (dispatch) => {
     dispatch(fetchDataPending());
 
     try {
-        axios.get('/merchants')
-            .then(({data: transactions}) => dispatch(fetchDataSuccess(transactions)));
+        axios.get('/merchants').then(({data: merchants}) => dispatch(fetchDataSuccess(merchants)));
     } catch (error) {
         dispatch(fetchDataFailure(error));
     }
@@ -36,21 +35,21 @@ const initialState = {
     loading: true
 };
 
-export const transactionsReducer = (state = initialState, action) => {
+export const merchantsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_TRANSACTIONS_SUCCESS:
+        case FETCH_MERCHANTS_SUCCESS:
             return {
                 data: action.payload,
                 error: null,
                 loading: false
             };
-        case FETCH_TRANSACTIONS_FAILURE:
+        case FETCH_MERCHANTS_FAILURE:
             return {
                 data: [],
                 error: action.payload,
                 loading: false
             };
-        case FETCH_TRANSACTIONS_PENDING:
+        case FETCH_MERCHANTS_PENDING:
             return initialState;
         default:
             return state;

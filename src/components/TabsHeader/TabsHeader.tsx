@@ -31,7 +31,11 @@ const TabsHeader: FC<TabsHeaderProps> = ({activeTab, setActiveTab, tabs}) => {
     return (
         <div id="th-root" style={{display: 'flex'}}>
             {tabs.map((tab, idx) => (
-                <Tab selected={activeTab.label === tab.label} key={`${tab.label}-${idx}`} onClick={() => setActiveTab(tab)}>
+                <Tab
+                    selected={activeTab.label === tab.label}
+                    key={`${tab.label}-${idx}`}
+                    onClick={() => setActiveTab(tab)}
+                >
                     {tab.label}
                 </Tab>
             ))}
