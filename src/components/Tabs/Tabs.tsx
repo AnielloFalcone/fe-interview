@@ -1,4 +1,5 @@
 import React, {FC, useState} from "react";
+import {StyleConstants} from "../../shared/constants";
 
 // Components
 import TabsContent from "../TabsContent/TabsContent";
@@ -13,10 +14,13 @@ type TabsProps = {
 }
 
 const TabsRoot = styled.div`
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     align-items: center;
+    background: ${StyleConstants.colors.darkGrey};
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: start;
 `
 
 const Tabs: FC<TabsProps> = ({tabs}) => {

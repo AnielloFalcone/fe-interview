@@ -20,6 +20,9 @@ const AccordionBodyRoot = styled.div`
 `;
 
 const Transaction = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 0.2fr;
+    height: 30px;
     max-height: 500px;
     transition: all 0.35s ease-in;
 `
@@ -29,7 +32,8 @@ const AccordionBody: FC<AccordionBodyProps> = ({data, isVisible}) => {
         <AccordionBodyRoot id="ab-root" isVisible={isVisible}>
             {data.transactions.map((transaction) => (
                 <Transaction key={`transaction-${transaction.id}`}>
-                    {transaction.id}
+                    <div>{transaction.date}</div>
+                    <div>{transaction.amount} €</div>
                 </Transaction>
             ))}
         </AccordionBodyRoot>

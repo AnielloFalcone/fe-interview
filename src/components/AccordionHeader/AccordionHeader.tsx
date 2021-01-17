@@ -1,8 +1,9 @@
-import React, {FC} from "react";
+import React, {FC, useState} from "react";
 import styled from "styled-components";
 import coin from '../../assets/cleo_coin.jpg';
 
 type AccordionHeaderProps = {
+    imageUrl: string,
     label: string,
     onHeaderClick: Function,
     transactionsCount: number
@@ -18,7 +19,7 @@ const Header = styled.div`
 const LabelContainer = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
 `
 
 const AccordionAvatar = styled.img`
@@ -27,13 +28,22 @@ const AccordionAvatar = styled.img`
     width: 50px
 `
 
-const AccordionHeader: FC<AccordionHeaderProps> = ({label, onHeaderClick, transactionsCount}) => {
+const AccordionHeader: FC<AccordionHeaderProps> = (
+    {imageUrl, label, onHeaderClick, transactionsCount}
+) => {
+    const [url, setUrl] = useState(imageUrl || coin);
+
+    /**
+     * Will fallback to cleo coin if img src doesn't work
+     */
+    const onImageError = () => setUrl(coin);
+
     return (
         <Header id="ah-root" onClick={() => onHeaderClick()}>
-            <AccordionAvatar src={coin}  alt="coin"/>
+            <AccordionAvatar src={url}  alt="logo" onError={onImageError}/>
             <LabelContainer>
-                <div>{label}</div>
-                <div>{transactionsCount}</div>
+                <b>{label}</b>
+                <div>Total transactions: {transactionsCount}</div>
             </LabelContainer>
         </Header>
     )

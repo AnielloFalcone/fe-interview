@@ -3,6 +3,7 @@ import {Merchant} from "../../shared/types";
 import AccordionHeader from "../AccordionHeader/AccordionHeader";
 import AccordionBody from "../AccordionBody/AccordionBody";
 import styled from "styled-components";
+import {StyleConstants} from "../../shared/constants";
 
 type AccordionRowProps = {
     //This should be any type needed but since in this case it only works with Merchants I'll use it for precision
@@ -11,7 +12,9 @@ type AccordionRowProps = {
 
 const AccordionRowRoot = styled.div`
     align-items: center;
-    border-bottom: 1px solid lightgrey;
+    &:not(:last-child) {
+        border-bottom: 1px solid ${StyleConstants.colors.yellow};
+    }
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -29,6 +32,7 @@ const AccordionRow: FC<AccordionRowProps> = ({data}) => {
         <AccordionRowRoot id="ar-root">
             <AccordionHeader
                 label={data.name}
+                imageUrl={data.iconUrl}
                 onHeaderClick={handleHeaderClick}
                 transactionsCount={data.transactions.length}
             />

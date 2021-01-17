@@ -2,6 +2,7 @@ import React, {FC} from "react";
 import {Merchant} from "../../shared/types";
 import AccordionRow from "../AccordionRow/AccordionRow";
 import styled from "styled-components";
+import {StyleConstants} from "../../shared/constants";
 
 type AccordionProps = {
     //This should be Array<any type needed>
@@ -11,7 +12,7 @@ type AccordionProps = {
 
 const AccordionRoot = styled.div`
     width: 600px;
-    box-shadow: 1px 1px 5px darkgrey;
+    border: 1px solid ${StyleConstants.colors.yellow};
 `
 
 const Accordion: FC<AccordionProps> = ({rows}) => {

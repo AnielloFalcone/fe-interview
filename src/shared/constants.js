@@ -1,6 +1,7 @@
 export const StyleConstants = {
   colors: {
     blue: '#0815FF',
+    darkGrey: '#18000C',
     yellow: '#F7BF31',
   },
 };

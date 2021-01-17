@@ -15,6 +15,7 @@ type AppProps = {
 }
 
 const App: FC<AppProps> = ({fetchMerchants, loading}) => {
+    // Here it is possible to configure how many tabs to show and which component is linked to each tab
     const tabs = [
         {label: 'Bills', component: <Bills/>},
         {label: 'Transactions', component: <Transactions/>}
