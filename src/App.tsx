@@ -22,14 +22,13 @@ const App: FC<AppProps> = ({fetchMerchants, loading}) => {
     const [showContent, setShowContent] = useState<boolean>(false);
 
     useEffect(() => {
-        fetchMerchants();
         // this timeout is needed only because the startup time is very short therefore displaying the loading
         // within that amount of time was pointless, now it looks like it is loading something for real (simulating auth)
         setTimeout(() => setShowContent(true), 700);
+        fetchMerchants();
     }, [fetchMerchants])
 
     return (
-        // <img src={welcomeIcon} alt="Welcome!"/>
         <LoadingOverlay showLoading={loading || !showContent}>
             <Tabs {...{tabs}}/>
         </LoadingOverlay>

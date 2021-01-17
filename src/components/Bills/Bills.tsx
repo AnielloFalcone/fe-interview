@@ -2,6 +2,8 @@ import React, {FC, useEffect, useState} from "react";
 import {Merchant, ReduxState} from "../../shared/types";
 import {connect} from "react-redux";
 
+import Accordion from "../Accordion/Accordion";
+
 type BillsProps = {
     merchants: Array<Merchant>
 };
@@ -16,9 +18,7 @@ const Bills: FC<BillsProps> = ({merchants}) => {
 
     return (
         <div id="bills-root">
-            {bills.length > 0 && bills.map((bill) => (
-                <div>{bill.name}</div>
-            ))}
+            <Accordion rows={bills}/>
         </div>
     )
 }
