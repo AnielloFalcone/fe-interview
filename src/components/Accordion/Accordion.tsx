@@ -1,6 +1,7 @@
 import React, {FC} from "react";
 import {Merchant} from "../../shared/types";
 import AccordionRow from "../AccordionRow/AccordionRow";
+import styled from "styled-components";
 
 type AccordionProps = {
     //This should be Array<any type needed>
@@ -8,13 +9,18 @@ type AccordionProps = {
     rows: Array<Merchant>
 }
 
+const AccordionRoot = styled.div`
+    width: 600px;
+    box-shadow: 1px 1px 5px darkgrey;
+`
+
 const Accordion: FC<AccordionProps> = ({rows}) => {
     return (
-        <div id="accordion-root">
+        <AccordionRoot id="accordion-root">
             {rows.map((row) => (
                 <AccordionRow data={row} key={`merchant-${row.id}`}/>
             ))}
-        </div>
+        </AccordionRoot>
     )
 }
 

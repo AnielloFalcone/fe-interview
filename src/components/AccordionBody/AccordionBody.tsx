@@ -1,17 +1,38 @@
 import React, {FC} from "react";
 import {Merchant} from "../../shared/types";
+import styled from "styled-components";
 
 type AccordionBodyProps = {
-    data: Merchant
+    data: Merchant,
+    isVisible: boolean
 }
 
-const AccordionBody: FC<AccordionBodyProps> = ({data}) => {
+type BodyRootProps = {
+    isVisible: boolean
+}
+
+const AccordionBodyRoot = styled.div`
+    margin: ${((props: BodyRootProps) => props.isVisible ? '16px' : 0)};
+    max-height: ${((props: BodyRootProps) => props.isVisible ? '200px' : 0)};
+    overflow: hidden;
+    transition: all 0.25s ease-out;
+    width: 100%;
+`;
+
+const Transaction = styled.div`
+    max-height: 500px;
+    transition: all 0.35s ease-in;
+`
+
+const AccordionBody: FC<AccordionBodyProps> = ({data, isVisible}) => {
     return (
-        <div id="ab-root">
+        <AccordionBodyRoot id="ab-root" isVisible={isVisible}>
             {data.transactions.map((transaction) => (
-                <div key={`transaction-${transaction.id}`}>{transaction.id}</div>
+                <Transaction key={`transaction-${transaction.id}`}>
+                    {transaction.id}
+                </Transaction>
             ))}
-        </div>
+        </AccordionBodyRoot>
     )
 }
 
