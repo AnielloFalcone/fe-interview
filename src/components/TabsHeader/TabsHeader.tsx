@@ -30,7 +30,6 @@ const Tab = styled.div`
 const TabsHeader: FC<TabsHeaderProps> = ({activeTab, setActiveTab, tabs}) => {
     return (
         <div id="th-root" style={{display: 'flex'}}>
-            {/* @ts-ignore */}
             {tabs.map((tab, idx) => (
                 <Tab selected={activeTab.label === tab.label} key={`${tab.label}-${idx}`} onClick={() => setActiveTab(tab)}>
                     {tab.label}
