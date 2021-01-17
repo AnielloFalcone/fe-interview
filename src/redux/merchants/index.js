@@ -1,5 +1,4 @@
 import axios from '../../settings/customAxios';
-import {Merchant} from '../../shared/types';
 
 /* TYPES */
 export const FETCH_MERCHANTS_PENDING = 'FETCH_MERCHANTS_PENDING';
