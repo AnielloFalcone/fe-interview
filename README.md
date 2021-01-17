@@ -1,4 +1,12 @@
 ## Cleo Frontend Interview - Bills
+###
+Hi 😁!
+ 
+Unfortunately I spent more than what I planned on it (~5.5h).
+Mostly I spent a lot of time trying to implement correctly React and Typescript.
+
+If I had the chance to improve what I did would be to add cypress for end-to-end testing.
+
 ### Get Started
 1. Fork or clone this repo (a simple [`create-react-app`](https://github.com/facebook/create-react-app) extended with [`json-server`](https://github.com/typicode/json-server) and some Cleo-specific goodies)
 1. Install dependencies via `yarn` (or `npm`)
