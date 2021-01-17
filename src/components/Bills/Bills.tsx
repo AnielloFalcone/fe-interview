@@ -5,17 +5,10 @@ import {connect} from "react-redux";
 import Accordion from "../Accordion/Accordion";
 
 type BillsProps = {
-    merchants: Array<Merchant>
+    bills: Array<Merchant>
 };
 
-const Bills: FC<BillsProps> = ({merchants}) => {
-    const [bills, setBills] = useState<Array<Merchant>>([]);
-
-    useEffect(() => {
-        const billsFromMerch = merchants.filter((m: Merchant) => m.isBill);
-        setBills(billsFromMerch);
-    }, [merchants]);
-
+const Bills: FC<BillsProps> = ({bills}) => {
     return (
         <div id="bills-root">
             <Accordion rows={bills}/>
@@ -23,6 +16,6 @@ const Bills: FC<BillsProps> = ({merchants}) => {
     )
 }
 
-const mapStateToProps = (state: ReduxState) => ({merchants: state.merchants.data});
+const mapStateToProps = (state: ReduxState) => ({bills: state.merchants.bills});
 
 export default connect(mapStateToProps)(Bills);

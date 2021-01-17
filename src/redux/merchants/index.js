@@ -1,4 +1,5 @@
 import axios from '../../settings/customAxios';
+import {Merchant} from '../../shared/types';
 
 /* TYPES */
 export const FETCH_MERCHANTS_PENDING = 'FETCH_MERCHANTS_PENDING';
@@ -28,20 +29,26 @@ export const fetchMerchants = () => async (dispatch) => {
     }
 };
 
+
 /* REDUCERS */
 const initialState = {
-    data: [],
+    bills: [],
     error: null,
-    loading: true
+    loading: true,
+    transactions: [],
 };
 
 export const merchantsReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_MERCHANTS_SUCCESS:
+            const bills = action.payload.filter((m) => m.isBill);
+            const transactions = action.payload.filter((t) => !t.isBill);
+
             return {
-                data: action.payload,
+                bills,
                 error: null,
-                loading: false
+                loading: false,
+                transactions
             };
         case FETCH_MERCHANTS_FAILURE:
             return {
